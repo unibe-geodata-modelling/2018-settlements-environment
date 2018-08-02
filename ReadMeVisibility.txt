@@ -77,14 +77,14 @@ Here only the visible area is extracted from the newly created visibility raster
 
 
 ***********************************************************************
-Converting the attribute table of the visible area to a dbase (line 73)
+Converting the attribute table of the visible area to a dBase (line 73)
 ***********************************************************************
 
-On line 73 you convert the attribute table of the visible area to a dbase with "arcpy.TableToTable_conversion()". The first input is the input table you
+On line 73 you convert the attribute table of the visible area to a dBase with "arcpy.TableToTable_conversion()". The first input is the input table you
 want to have converted, in this case saved in the "visarea" variable. For the first input you do not have to change anything.
 The second is the output path. You can adjust the output path if you want, however for the further commands it is important
-that you save the output in a folder, where no other dbase or other tables exist. What cannot be changed is the ending of the databeses ... + str(id) + ".dbf"
-since this allows to save each table seperatly and as a dbase.
+that you save the output in a folder, where no other dBase or other tables exist. What cannot be changed is the ending of the databeses ... + str(id) + ".dbf"
+since this allows to save each table seperatly and as a dBase.
 
 
 ******************************************************************************
@@ -92,8 +92,8 @@ Joining the individual tables and the "myworkspace2" variable (lines 82 to 84)
 ******************************************************************************
 
 On line 82 a second workspace environment is set since the function "listTables" lists all the tables in the workspace that was set. You have to adjust
-this path to the folder where you saved dbase version of the attribute tables of the visible area rasters -> see also just above "Converting the attribute
-table of the visible area to a dbase(line 73).
+this path to the folder where you saved dBase version of the attribute tables of the visible area rasters -> see also just above "Converting the attribute
+table of the visible area to a dBase(line 73).
 
 On line 83 you do not have to change anything.
 
@@ -128,7 +128,7 @@ On line 102 you can adjust the path to your chosen directory.
 **********************************************************************
 Calculating the mean and the standard deviation (line 107 to line 114)
 **********************************************************************
-On line 107 you can adjust the first two inputs of the function arcpy.Statistics_analysis(). The first one only has to be adjustet if you chose to give the visible area dbase table another name.
+On line 107 you can adjust the first two inputs of the function arcpy.Statistics_analysis(). The first one only has to be adjustet if you chose to give the visible area dBase table another name.
 The second input is the output path for the table with the calculated mean and the standard deviation.
 
 On line 109 you have to adjust the path of the Dbf5 function to where you have saved the results from line 107.
