@@ -69,7 +69,7 @@ for row in cursor: #for each row in this shapefile following commands apply:
 
     # extract only the visible area to a new raster:
     arcpy.gp.ExtractByAttributes_sa(visible_area, "\"OID\" =1", visarea) #1 stands in this case for the visible area (0 would be non-visible)
-    #convert attribute tables to dbase and save them. The ID is added to the name as with the rasterfiles before, so that they can be saved separatly:
+    #convert attribute tables to dBase and save them. The ID is added to the name as with the rasterfiles before, so that they can be saved separatly:
     arcpy.TableToTable_conversion(visarea, myworkspace + "/" + "Results" + "/" + "Tables", "visarea" + str (id) + ".dbf", "", "Value \"Value\" false true false 10 Long 0 10 ,First,#,D:\\Unibern\\Geographie\\Master\\Geodatenanalyse\\Projekt\\MeineToolbox\\ToolData\\Results\\Viewshed\\visarea + str (id) +.tif\\Band_1,Value,-1,-1;Count \"Count\" false true false 19 Double 0 0 ,First,#,D:\\Unibern\\Geographie\\Master\\Geodatenanalyse\\Projekt\\MeineToolbox\\ToolData\\Results\\Viewshed\\visarea + str (id) +.tif\\Band_1,Count,-1,-1;Area \"Area\" true true false 10 Long 0 10 ,First,#,D:\\Unibern\\Geographie\\Master\\Geodatenanalyse\\Projekt\\MeineToolbox\\ToolData\\Results\\Viewshed\\visarea + str (id) +.tif\\Band_1,Area,-1,-1;ID \"ID\" true true false 5 Short 0 5 ,First,#,D:\\Unibern\\Geographie\\Master\\Geodatenanalyse\\Projekt\\MeineToolbox\\ToolData\\Results\\Viewshed\\visarea + str (id) +.tif\\Band_1,ID,-1,-1", "")
     cursor.updateRow(row) #the cursor goes to the next row/next settlement
 del row #you don't have to do that, but if you create another cursor it is sometimes better to delete the old one
