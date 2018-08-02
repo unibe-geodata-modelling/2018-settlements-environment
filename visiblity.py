@@ -112,4 +112,4 @@ statisticsVISmean= statisticsVIS["MEAN_Area"] #Setting variable of the mean
 statisticsVISstd= statisticsVIS["STD_Area"] #Setting variable of the Standard deviation
 
 COV=statisticsVISstd*100/statisticsVISmean #calculating the coefficient of variance
-print COV
+print COV #the coefficient of variance is displayed in the console

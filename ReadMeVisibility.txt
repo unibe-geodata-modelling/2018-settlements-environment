@@ -132,7 +132,7 @@ On line 107 you can adjust the first two inputs of the function arcpy.Statistics
 The second input is the output path for the table with the calculated mean and the standard deviation.
 
 On line 109 you have to adjust the path of the Dbf5 function to where you have saved the results from line 107.
-You do not have to change anything for the following lines.
+You do not have to change anything for the following lines. On line 115 the coefficient of variance is automatically displayed in the console as soon as you run this line. However, it is not saved in any table.
 
 
 **********************************
