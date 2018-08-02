@@ -30,6 +30,7 @@ arcpy.env.extent = dem #extent setting/environnment setting)
 arcpy.env.snapRaster = dem #"Tools that honor the Snap Raster environment will adjust the extent of output rasters so that they match the cell alignment of the specified snap raster" (ArcGIs for Desktop 2018).
 #ArcGIS for Desktop (2018). Snap Raster (Environment setting) [online]. Available at: "http://desktop.arcgis.com/en/arcmap/10.3/tools/environments/snap-raster.htm" [last accessed: 01.08.2018].
 
+
 #Set the temporary directory
 settl=tempdir+"/"+"settlement.shp"
 
@@ -48,7 +49,7 @@ settl=tempdir+"/"+"settlement.shp"
 cursor = arcpy.da.UpdateCursor(settlements, ["FID", "MaxArea"]) #a cursor is made -> same as selecting a row. In the square brackets the fields/columns that you want selected are put in. In this case "FID" the identification number and "MaxArea" where the visible area will be written in.
 for row in cursor: #for each row in this shapefile following commands apply:
     id = row[0] #row with index 0 is the first row
-    visible_area= os.path.join(myworkspace + "/" + "Results" + "/" + "Viewshed" + "/" "visib" + str (id) + ".tif") #os path join is used, that the visible area of each area is saved separately with its ID number at the end of the name
+    visible_area= os.path.join(myworkspace + "/" + "Results" + "/" + "Viewshed" + "/" "visib" + str (id) + ".tif") #os path join is used, that the visible area of each area is saved separately with its ID number at the end of the name. The str (id) coincides with the real FID of the settlements in the settlement shapefile
     visarea= os.path.join(myworkspace + "/" + "Results" + "/" + "Viewshed" + "/" "visarea" + str (id) + ".tif") #variable is later used to only extract the count of visible area/cells (the output of the visiblity anlysis gives out an attribute table with two classes: visible and non-visible)
     print "processing FID: " + str(id)
     where_clause = '"FID" = ' + str(id) # This variable will be used for the function arcpy.Select_analysis() to select which settlement is being processed
@@ -64,7 +65,7 @@ for row in cursor: #for each row in this shapefile following commands apply:
     arcpy.AddField_management(visible_area, "ID", "SHORT", "", "", "", "", "NULLABLE", "NON_REQUIRED", "") #the field "ID" is added to the newly created raster
     # Process: Calculate Field
     arcpy.CalculateField_management(visible_area, "Area", "[Count]*40000", "VB", "") #Calculation of the area in square meters. The count has to be multiplied by 40000 since one cell is an area of 200x200 m
-    arcpy.CalculateField_management(visible_area, "ID", str (id), "VB", "") #The ID number is saved as well in the attribute table of the new visibilty raster for each settlement, so that is clear which visible area belongs to which settlment when later on they are all combined in one table.
+    arcpy.CalculateField_management(visible_area, "ID", str (id), "VB", "") #str (id) is used to fill out the field "ID" for each settlement.
 
     # extract only the visible area to a new raster:
     arcpy.gp.ExtractByAttributes_sa(visible_area, "\"OID\" =1", visarea) #1 stands in this case for the visible area (0 would be non-visible)
@@ -84,7 +85,7 @@ arcpy.Merge_management(listTable, myworkspace2 +"/" + "visiblareajoin.dbf") #joi
 print "done!"
 
 # Process: Join Field
-arcpy.JoinField_management(myworkspace + "/" + "Results" +  "/" + "Tables" +"/" + "visiblareajoin.dbf", "ID", settlements, "ID", "Name;Gemeinde;Epoche;Zeitstufe;Datierung;Fundort") #join the table of the visible area to the settlement table over the field "ID"
+arcpy.JoinField_management(myworkspace2 +"/" + "visiblareajoin.dbf", "ID", settlements, "ID", "Name;Gemeinde;Epoche;Zeitstufe;Datierung;Fundort") #join the table of the visible area to the settlement table over the field "ID"
 
 #*****************************
 # visualisation in a bar plot
