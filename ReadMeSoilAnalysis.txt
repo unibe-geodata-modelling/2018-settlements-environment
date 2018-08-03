@@ -9,22 +9,22 @@ Variables "myworkspace", "Bodeneignungskarte", "settlements", "Bufferzone100_shp
 For the soil analysis you have to adjust the variable "myworkspace" (line 14) to your chosen workspace. 
 
 The "Bodeneignungskarte" variable (line 21) is where you read in your shapefile of your soil suitablity map. You have to adjust
-the path to where you have saved your soil suitability map. 
+the path to where you have stored your soil suitability map. 
 
 The "settlements" variable (line 22) is where you read in your point shapefile of settlements. You have to adjust the path to
-where you have saved your settlement shapefile.
+where you have stored your settlement shapefile.
 
 "Bufferzone100_shp" to "Bufferzone5000_shp" (lines 29 to 32): These are the variables for the buffers you set around your settlements. You can adjust the path
 to your chosen directory. Since it is no final result you could also place it in a temporary directory.
 
-The variables "interBoden100" to "interBoden5000" (lines 58 to 61) are the variables that are used for the intersect function.  You can adjust the path
+The variables "interBoden100" to "interBoden5000" (lines 58 to 61) are the variables that are used for the output of the intersect function.  You can adjust the path
 to your chosen directory. Since it is no final result you ccould also place it in a temporary directory.
 
 Variables "SumBuff100" to "SumBuff5000" (lines 127 to 130): Sometimes in one buffer the same soil suitability can appear in several separated polygons. 
-These variables are later used in the function to combine these separated polygons, that the same kind of soil suitability only appears once per village in the table.
+These variables are later used as the output path in the function that combines these separated polygons.
 You can adjust the path to your chosen directory. Since it is no final result you could also place it in a temporary directory.
 
-Variables "SoilStats100" to "SoilStats5000" (lines 145 to 148): These variables are later used to calculate the mean percantage of land coverage of a type soil suitability per settlment/buffer.
+Variables "SoilStats100" to "SoilStats5000" (lines 145 to 148): These variables are later used as the output path in the analysis function where the mean and standard deviation is determined (lines 154 to 157).
 You can adjust the path to your chosen directory.
 
 
@@ -91,6 +91,7 @@ replace this with your correspondending field name.
 **********************************
 **********************************
 
-When you have run the script you have four dBase files (on per buffer). In this case further evaluation was done in Excel.
+When you have run the script you have four dBase files (on per buffer) and an additional dBase file with the mean and standard deviation. 
+In this case further evaluation was done in Excel.
 
 Lines that are not commented on do not need to be adjusted.

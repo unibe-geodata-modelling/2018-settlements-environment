@@ -94,7 +94,7 @@ arcpy.AddGeometryAttributes_management(interLake5000, "AREA", "METERS", "SQUARE_
 #Get the area of the buffer for later calculations
 AreaBuff100=arcpy.SearchCursor(BuffLake100)
 for Area100 in AreaBuff100:
-    Area100m=Area100.getValue("POLY_AREA") #The value is taken from the field "POLY_AREA" that was created in lines 40 to 43
+    Area100m=Area100.getValue("POLY_AREA") #The value is taken from the field "POLY_AREA" that was created in lines 50 to 53
     print (Area100m) #Prints out the area in the console -> for this buffer it is: 31374,937m2
 
 AreaBuff500=arcpy.SearchCursor(BuffLake500)

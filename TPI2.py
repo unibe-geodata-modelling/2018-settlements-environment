@@ -3,7 +3,6 @@ from arcpy import env
 from arcpy.sa import *
 from arcpy.sa import Con
 
-
 if arcpy.CheckExtension("Spatial") == "Available":
     arcpy.CheckOutExtension('Spatial') #Checkout the extension
 else:

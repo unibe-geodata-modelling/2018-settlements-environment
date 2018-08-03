@@ -4,12 +4,12 @@ Read Me Visibility Analysis
 Variable "myworkspace", "settl", "settlements", "dem" and "visible_area" (several lines):
 *****************************************************************************************
 
-For the visiblity analysis you have to adjust the variable "myworkspace" (line 16) to your chosen workspace where you
-want so save the results. The variable "tempdir" (line 17) must also be adjustet to your own temporary directory.
+For the visiblity analysis you have to adjust the variable "myworkspace" (line 16) to your chosen workspace.
+The variable "tempdir" (line 17) must also be adjustet to your own temporary directory.
 
 The "settlements" variable (line 24) is where you read in your point shapefile of settlements and the "dem" 
 variable (line 27) is where you read in your DEM. There you have to adjust the path to the directory where your
-point shapefile/ DEM is saved.
+point shapefile/ DEM is stored.
 
 The "settl" variable (line 34) is where you set your temporary directory.
 
@@ -27,7 +27,7 @@ allows to save new raster data sets separatly and as a tiff.
 Cell size and extention setting (lines 28 and 30)
 *************************************************
 
-On the lines 28 to 30 you do not have to change anything. Here the cell size the extent and the newly produced rasters made during the script
+On the lines 28 to 30 you do not have to change anything. Here the cell size, the extent and the newly produced rasters made during the script
 are set to the extent and cell size of the DEM.
 
 **************************************
