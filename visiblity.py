@@ -93,7 +93,7 @@ arcpy.JoinField_management(myworkspace2 +"/" + "visiblareajoin.dbf", "ID", settl
 
 visblareadbf= Dbf5(myworkspace2 + "/" + "visiblareajoin.dbf") #Convert dbf-File into a data frame
 dfvisarea= visblareadbf.to_dataframe() #Convert dBase-File into a data frame
-plt.hist(dfvisarea["Area"],bins=56) #Command for a histogramm and how many bars you want to have displayed. In this case 56 were chosen because there are 56 settlements.
+plt.hist(dfvisarea["Area"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlements.
 plt.xlabel("m2") #Here you set your label for the x-axis
 plt.ylabel ("number of villages") #Here you set your label for the y-axis
 plt.title("Visible area per village") #Title of the plot

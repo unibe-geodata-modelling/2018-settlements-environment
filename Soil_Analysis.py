@@ -124,10 +124,10 @@ arcpy.CalculateField_management(interBoden5000, "Percent", "[POLY_AREA] /7853772
 #Variables for table with summarized soil suitabilities per village -> Sometimes in one buffer the same soil suitability can appear in several separated polygons.
 #These variables are used later to combine these separated polygons, that the same soil suitability only appears once per village in the table.
 
-SumBuff100 = myworkspace +"/" +"Results" + "/" + "SumBuff100.dbf" #These variables are later used to combine polygons with the same soil suitability.
-SumBuff500 = myworkspace +"/" +"Results" + "/" + "SumBuff500.dbf"
-SumBuff1000 = myworkspace +"/" +"Results" + "/" + "SumBuff1000.dbf"
-SumBuff5000 = myworkspace +"/" +"Results" + "/" + "SumBuff5000.dbf"
+SumBuff100 = myworkspace +"/" +"Landcover" + "/" + "SumBuff100.dbf" #These variables are later used to combine polygons with the same soil suitability.
+SumBuff500 = myworkspace +"/" +"Landcover" + "/" + "SumBuff500.dbf"
+SumBuff1000 = myworkspace +"/" +"Landcover" + "/" + "SumBuff1000.dbf"
+SumBuff5000 = myworkspace +"/" +"Landcover" + "/" + "SumBuff5000.dbf"
 
 #Function for summarizing the soil suitability (along with their percentages of coverage in the buffer area) per village as stated above.
 arcpy.Statistics_analysis(interBoden100, SumBuff100, "Percent SUM", "Eignungsei;Fundort")

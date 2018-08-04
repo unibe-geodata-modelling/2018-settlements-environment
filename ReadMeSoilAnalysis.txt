@@ -91,7 +91,8 @@ replace this with your correspondending field name.
 **********************************
 **********************************
 
-When you have run the script you have four dBase files (on per buffer) and an additional dBase file with the mean and standard deviation. 
-In this case further evaluation was done in Excel.
+After this script is run you will have four dBase files with the frequency and the mean land coverage in percent for the the different soil suitbailitis per buffer.
+
+The visualisation itself was done in Excel.
 
 Lines that are not commented on do not need to be adjusted.

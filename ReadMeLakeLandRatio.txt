@@ -98,9 +98,12 @@ On line 192 you can adjust the second input of the function arcpy.Statistics_ana
 for the table with the calculated mean and the standard deviation.
 On line 193 you have to adjust the path in the function "Dbf5" to where you have saved the table with the calculated mean and the standard deviation on line 192.
 The other lines do not need any adjustments.
-
+To see the coefficient of variance you have to run the line 199 which prints out the COV in the console, however it is not saved in any table.
 
 **********************************
 **********************************
 
 Lines that are not commented on in this ReadMe do not need to be adjusted.
+
+After this script is run you will have four dBase (one per buffer distance) tables with the lake coverage in percent per settlement and four (one per buffer distance)
+additional dBase files with only the mean and standard deviation over all settlements.

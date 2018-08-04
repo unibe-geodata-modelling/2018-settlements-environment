@@ -143,7 +143,7 @@ arcpy.Statistics_analysis(interLake5000, SumLakeBuff5000, "Percent SUM", "Fundor
 #Visualisation in a bar plot for the 100 m buffer
 LakeAreadbf100= Dbf5(SumLakeBuff100) #Convert dBase-File into a data frame
 dfLakeArea100= LakeAreadbf100.to_dataframe() #Convert dbf-File into a data frame
-plt.hist(dfLakeArea100["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have displayed. In this case 56 were chosen because there are 56 settlements.
+plt.hist(dfLakeArea100["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlements.
 plt.xlabel("%") #The name of the x-axis
 plt.ylabel ("number of villages") #The name of the y-axis
 plt.title("Lake area per village, 100 m") #The title of the figure
@@ -154,7 +154,7 @@ plt.savefig(myworkspace + "/" +"Results" + "/" + "histolakerea100.png") #Saving 
 #Visualisation in a bar plot for the 500 m buffer
 LakeAreadbf500= Dbf5(SumLakeBuff500) #Convert dBase-File into a data frame
 dfLakeArea500= LakeAreadbf500.to_dataframe() #Convert dbf-File into a data frame
-plt.hist(dfLakeArea500["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have displayed. In this case 56 were chosen because there are 56 settlements.
+plt.hist(dfLakeArea500["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlements.
 plt.xlabel("%") #The name of the x-axis
 plt.ylabel ("number of villages") #The name of the y-axis
 plt.title("Lake area per village, 500 m") #The title of the figure
@@ -165,7 +165,7 @@ plt.savefig(myworkspace + "/" +"Results" + "/" + "histolakerea500.png") #Saving 
 #Visualisation in a bar plot for the 1000 m buffer
 LakeAreadbf1000= Dbf5(SumLakeBuff1000) #Convert dbf-File into a data frame
 dfLakeArea1000= LakeAreadbf1000.to_dataframe() #Convert dbf-File into a data frame
-plt.hist(dfLakeArea1000["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have displayed. In this case 56 were chosen because there are 56 settlements.
+plt.hist(dfLakeArea1000["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlements.
 plt.xlabel("%") #The name of the x-axis
 plt.ylabel ("number of villages") #The name of the y-axis
 plt.title("Lake area per village, 1000 m") #The title of the figure
@@ -176,7 +176,7 @@ plt.savefig(myworkspace + "/" +"Results" + "/" + "histolakerea1000.png") #Saving
 #Visualisation in a bar plot for the 5000 m buffer
 LakeAreadbf5000= Dbf5(SumLakeBuff5000) #Convert dbf-File into a data frame
 dfLakeArea5000= LakeAreadbf5000.to_dataframe() #Convert dbf-File into a data frame
-plt.hist(dfLakeArea5000["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have displayed. In this case 56 were chosen because there are 56 settlements.
+plt.hist(dfLakeArea5000["SUM_Percen"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlements.
 plt.xlabel("%") #The name of the x-axis
 plt.ylabel ("number of villages") #The name of the y-axis
 plt.title("Lake area per village, 5000 m") #The title of the figure

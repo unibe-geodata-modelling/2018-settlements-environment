@@ -45,7 +45,7 @@ arcpy.Near_analysis(Settlements, Rivers, "", "NO_LOCATION", "NO_ANGLE", "PLANAR"
 
 Riverdbf= Dbf5(Settldbf) #Convert dBase file into a data frame
 dfRiver= Riverdbf.to_dataframe() #Convert dBase file into a data frame
-plt.hist(dfRiver["NEAR_DIST"],bins=56) #Command for a histogramm and how many bars you want to have displayed. In this case 56 were chosen because there are 56 settlments.
+plt.hist(dfRiver["NEAR_DIST"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlments.
 plt.xlabel("m") #Here you set your name for the x-axis
 plt.ylabel ("number of villages") #Here you set your name for the y-axis
 plt.title("Distance to nearest river") #Title of the plot

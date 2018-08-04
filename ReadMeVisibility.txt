@@ -139,3 +139,6 @@ You do not have to change anything for the following lines. On line 115 the coef
 **********************************
 
 Lines that are not commented on in this ReadMe do not need to be adjusted.
+
+After the script is run you will have rasters with the visible area for all settlements, as well as a dBase table visibleareajoin.dbf where all the settlements are listed with their
+visible area in sqaure meters.

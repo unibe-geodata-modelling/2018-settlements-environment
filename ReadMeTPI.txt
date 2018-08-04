@@ -180,8 +180,10 @@ You do not need to change anything here.
 **********************************
 **********************************
 
-When you have run the script you have four dBase files (on per buffer) and an additional dBase file with the mean and standard deviation. 
-In this case further evaluation was done in Excel.
+When you have run the script you have four dBase files (one per buffer distance) with the frequency and mean land coverage in percent per landform class
+and four each buffer distance an additional dBase file with the mean and standard deviation. 
+
+The visualisation itself was done in Excel.
 
 Lines that are not commented on in this ReadMe do not need to be adjusted.
 
