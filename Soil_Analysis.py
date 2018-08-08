@@ -8,7 +8,7 @@ else:
 
 
 #*****************************
-#set environemnt and workspace
+#Set environemnt and workspace
 #*****************************
 
 myworkspace="D:/Unibern/Geographie/Master/Geodatenanalyse/Projekt/MeineToolbox/ToolData" #Variable for the workspace path
@@ -18,7 +18,7 @@ arcpy.env.overwriteOutput = True #Allows to overwrite other files (e.g. to overw
 
 
 #Soil Suitability map and settlment points
-Bodeneignungskarte= myworkspace + "/" + "Landcover" + "/" + "Bodeneignungskarte_LV03.shp" #Reading in the soil type map
+Bodeneignungskarte= myworkspace + "/" + "Landcover" + "/" + "Bodeneignungskarte_LV03.shp" #Reading in the soil suitability map
 Settlements = myworkspace + "/" + "Siedlungen" + "/" + "CH_SiedlungenLV03.shp" #Reading in the settlement point shapefile
 
 #********************
@@ -50,10 +50,10 @@ arcpy.AddGeometryAttributes_management(Bufferzone5000_shp, "AREA", "METERS", "SQ
 
 
 #***************************************************
-#intersect the buffers with the soil suitability map
+#Intersect the buffers with the soil suitability map
 #***************************************************
 
-#Intersect buffer and Bodeneignungskarte
+#Intersect buffer and Bodeneignungskarte/soil suitability map
 
 interBoden100 = myworkspace + "/" + "Landcover" + "/" + "interBoden100.shp" #Preparing variables for the intersect function
 interBoden500 = myworkspace + "/" + "Landcover" + "/" + "interBoden500.shp"
@@ -67,11 +67,11 @@ arcpy.Intersect_analysis([Bodeneignungskarte, Bufferzone1000_shp], interBoden100
 arcpy.Intersect_analysis([Bodeneignungskarte, Bufferzone5000_shp], interBoden5000, "ALL", "", "INPUT")
 
 
-#*******************************************************************************************************************
-#Adding the field "Percent" and calculate area for the newly created shapefile resulting from the intersect function
-#*******************************************************************************************************************
+#*************************************************************************************************************
+#Adding the field "Percent" and calculate the area for the newly created shapefile from the intersect function
+#*************************************************************************************************************
 
-# Add Field "Percent" for later calcuations for the area percentages of the individual polygon areas inside a buffer
+# Add Field "Percent" for later calculations for the area percentages of the individual polygon areas inside a buffer
 arcpy.AddField_management(interBoden100, "Percent", "DOUBLE", "", "", "", "", "NULLABLE", "NON_REQUIRED", "")
 arcpy.AddField_management(interBoden500, "Percent", "DOUBLE", "", "", "", "", "NULLABLE", "NON_REQUIRED", "")
 arcpy.AddField_management(interBoden1000, "Percent", "DOUBLE", "", "", "", "", "NULLABLE", "NON_REQUIRED", "")
@@ -92,22 +92,22 @@ arcpy.AddGeometryAttributes_management(interBoden5000, "AREA", "METERS", "SQUARE
 AreaBuff100=arcpy.SearchCursor(Bufferzone100_shp)
 for Area100 in AreaBuff100:
     Area100m=Area100.getValue("POLY_AREA") #The value is taken from the field "POLY_AREA" that was created in lines 46 to 49
-    print (Area100m) #Prints out the area in the console -> for this buffer it is: 31374,937m2
+    print (Area100m) #Prints out the area in the console -> for this buffer it is: 31374,937 m2
 
 AreaBuff500=arcpy.SearchCursor(Bufferzone500_shp)
 for Area500 in AreaBuff500:
     Area500m=Area500.getValue("POLY_AREA")
-    print (Area500m) #Prints out the area in the console -> for this buffer it is: 785191,173m2
+    print (Area500m) #Prints out the area in the console -> for this buffer it is: 785191,173 m2
 
 AreaBuff1000=arcpy.SearchCursor(Bufferzone1000_shp)
 for Area1000 in AreaBuff1000:
     Area1000m=Area1000.getValue("POLY_AREA")
-    print (Area1000m) #Prints out the area in the console -> for this buffer it is: 3141177,0m2
+    print (Area1000m) #Prints out the area in the console -> for this buffer it is: 3141177 m2
 
 AreaBuff5000=arcpy.SearchCursor(Bufferzone5000_shp)
 for Area5000 in AreaBuff5000:
     Area5000m=Area5000.getValue("POLY_AREA")
-    print (Area5000m) #Prints out the area in the console -> for this buffer it is: 78537724,241m2
+    print (Area5000m) #Prints out the area in the console -> for this buffer it is: 78537724,241 m2
 
 
 #*************************************************************
@@ -121,8 +121,8 @@ arcpy.CalculateField_management(interBoden1000, "Percent", "[POLY_AREA] /3141177
 arcpy.CalculateField_management(interBoden5000, "Percent", "[POLY_AREA] /78537724.241*100", "VB", "")
 
 
-#Variables for table with summarized soil suitabilities per village -> Sometimes in one buffer the same soil suitability can appear in several separated polygons.
-#These variables are used later to combine these separated polygons, that the same soil suitability only appears once per village in the table.
+#Variables for the table with summarized soil suitabilities per village -> Sometimes in one buffer the same soil suitability can appear in several separated polygons.
+#These variables are later used to combine these separated polygons, that the same soil suitability only appears once per village in the table.
 
 SumBuff100 = myworkspace +"/" +"Landcover" + "/" + "SumBuff100.dbf" #These variables are later used to combine polygons with the same soil suitability.
 SumBuff500 = myworkspace +"/" +"Landcover" + "/" + "SumBuff500.dbf"
@@ -149,15 +149,9 @@ SoilStats5000 = myworkspace + "/" + "Results" + "/" + "SoilStats5000.dbf"
 
 
 #Calculate the mean percentage and the standard deviation of the  individual soil suitabilities per buffer.
-#The mean percentage is not over all settlements/buffers. If a soil suitability category e.g. only appears in 5 settlements the percentage shows what the mean land coverage in percent for those 5 settlements is and not for all 56.
+#The mean percentage is not over all settlements/buffers. If a soil suitability category e.g. only appears in 5 settlements the percentage shows the mean land coverage in percent for those 5 settlements and not for all 56.
 
 arcpy.Statistics_analysis(SumBuff100, SoilStats100, "SUM_Percen MEAN;SUM_Percen STD", "Eignungsei")
 arcpy.Statistics_analysis(SumBuff500, SoilStats500, "SUM_Percen MEAN;SUM_Percen STD", "Eignungsei")
 arcpy.Statistics_analysis(SumBuff1000, SoilStats1000, "SUM_Percen MEAN;SUM_Percen STD", "Eignungsei")
 arcpy.Statistics_analysis(SumBuff5000, SoilStats5000, "SUM_Percen MEAN;SUM_Percen STD", "Eignungsei")
-
-
-
-
-
-
