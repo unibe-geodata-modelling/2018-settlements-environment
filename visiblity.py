@@ -25,7 +25,7 @@ settlements=myworkspace + "/" + "Siedlungen" + "/" + "CH_SiedlungenLV03.shp" #Re
 
 #DEM
 dem=arcpy.Raster(myworkspace + "/" + "dem" + "/" + "swiss200") #Reading in the DEM
-arcpy.env.cellSize = dem #Cellsize setting
+arcpy.env.cellSize = dem #Cell size setting
 arcpy.env.extent = dem #Setting the extent
 arcpy.env.snapRaster = dem #"Tools that honor the Snap Raster environment will adjust the extent of output rasters so that they match the cell alignment of the specified snap raster" (ArcGIs for Desktop 2018).
 #ArcGIS for Desktop (2018). Snap Raster (Environment setting) [online]. Available at: "http://desktop.arcgis.com/en/arcmap/10.3/tools/environments/snap-raster.htm" [last accessed: 01.08.2018].
