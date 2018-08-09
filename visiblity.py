@@ -11,7 +11,7 @@ else:
 
 
 #*****************************
-#Set environemnt and workspace
+#Set environment and workspace
 #*****************************
 myworkspace="D:/Unibern/Geographie/Master/Geodatenanalyse/Projekt/MeineToolbox/ToolData"
 tempdir="D:/temp" #Data that you don't need at the end
@@ -93,7 +93,7 @@ arcpy.JoinField_management(myworkspace2 +"/" + "visiblareajoin.dbf", "ID", settl
 
 visblareadbf= Dbf5(myworkspace2 + "/" + "visiblareajoin.dbf") #Convert dBase file into a data frame
 dfvisarea= visblareadbf.to_dataframe() #Convert dBase file into a data frame
-plt.hist(dfvisarea["Area"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlements.
+plt.hist(dfvisarea["Area"],bins=56) #Command for a histogram and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlements.
 plt.xlabel("m2") #Here you set the title of the x-axis
 plt.ylabel ("number of villages") #Here you set the title of the y-axis
 plt.title("Visible area per village") #Title of the plot
@@ -106,8 +106,8 @@ plt.savefig(myworkspace + "/" +"Results" + "/" + "histovisarea.png") #Saving the
 
 arcpy.Statistics_analysis(myworkspace2 +"/" + "visiblareajoin.dbf", myworkspace +"/" + "Results" + "/" + "StatisticsVIS.dbf", "Area MEAN;Area STD", "") #Function for the calculation of the mean and the standard deviation
 
-statisticsVISdbf= Dbf5(myworkspace + "/" + "Results" + "/" "StatisticsVIS.dbf") #Convert dBase file into a data frame
-statisticsVIS= statisticsVISdbf.to_dataframe() #Convert dBase file into a data frame
+statisticsVISdbf= Dbf5(myworkspace + "/" + "Results" + "/" "StatisticsVIS.dbf") #Convert the dBase file into a data frame
+statisticsVIS= statisticsVISdbf.to_dataframe() #Convert the dBase file into a data frame
 statisticsVISmean= statisticsVIS["MEAN_Area"] #Setting the variable of the mean
 statisticsVISstd= statisticsVIS["STD_Area"] #Setting the variable of the standard deviation
 

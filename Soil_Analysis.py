@@ -8,7 +8,7 @@ else:
 
 
 #*****************************
-#Set environemnt and workspace
+#Set environment and workspace
 #*****************************
 
 myworkspace="D:/Unibern/Geographie/Master/Geodatenanalyse/Projekt/MeineToolbox/ToolData" #Variable for the workspace path

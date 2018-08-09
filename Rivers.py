@@ -1,7 +1,7 @@
 import arcpy
-import pandas
 import matplotlib.pyplot as plt
 from simpledbf import Dbf5
+
 
 if arcpy.CheckExtension("Spatial") == "Available":
     arcpy.CheckOutExtension('Spatial') #Checkout the extension
@@ -20,7 +20,7 @@ arcpy.env.overwriteOutput = True #Allows to overwrite other files (e.g. to overw
 
 
 #*********************************************
-#Reading in the settlment and river shapefiles
+#Reading in the settlement and river shapefiles
 #*********************************************
 
 #Settlement shapefile:
@@ -40,14 +40,14 @@ arcpy.Near_analysis(Settlements, Rivers, "", "NO_LOCATION", "NO_ANGLE", "PLANAR"
 
 
 #*****************************
-# visualisation in a bar plot
+#Visualisation in a bar plot
 #*****************************
 
-Riverdbf= Dbf5(Settldbf) #Convert dBase file into a data frame
-dfRiver= Riverdbf.to_dataframe() #Convert dBase file into a data frame
-plt.hist(dfRiver["NEAR_DIST"],bins=56) #Command for a histogramm and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlments.
-plt.xlabel("m") #Here you set your name for the x-axis
-plt.ylabel ("number of villages") #Here you set your name for the y-axis
+Riverdbf= Dbf5(Settldbf) #Convert the dBase file into a data frame
+dfRiver= Riverdbf.to_dataframe() #Convert the dBase file into a data frame
+plt.hist(dfRiver["NEAR_DIST"],bins=56) #Command for a histogram and how many bars you want to have maximally displayed. In this case 56 were chosen because there are 56 settlments.
+plt.xlabel("m") ##Here you set the title of the x-axis
+plt.ylabel ("number of villages") #Here you set the title of the y-axis
 plt.title("Distance to nearest river") #Title of the plot
 plt.show() #Pop-up of the figure
 plt.savefig(myworkspace + "/" +"Results" + "/" + "historiver.png") #Saving the plot as a png
@@ -57,12 +57,12 @@ plt.savefig(myworkspace + "/" +"Results" + "/" + "historiver.png") #Saving the p
 #Calculate the mean, the standard deviation and the COV of the distance to the nearest river
 #*******************************************************************************************
 
-arcpy.Statistics_analysis(Settldbf, myworkspace +"/" + "Results" + "/" + "StatisticsRivers.dbf", "NEAR_DIST MEAN;NEAR_DIST STD", "") #Function for calculation of the mean and the standard deviation
+arcpy.Statistics_analysis(Settldbf, myworkspace +"/" + "Results" + "/" + "StatisticsRivers.dbf", "NEAR_DIST MEAN;NEAR_DIST STD", "") #Function for the calculation of the mean and the standard deviation
 
-statisticsRiversdbf= Dbf5(myworkspace + "/" + "Results" + "/" "StatisticsRivers.dbf") #Convert dBase file into a data frame
-statisticsRivers= statisticsRiversdbf.to_dataframe() #Convert dBase file into a data frame
-statisticsRiversmean= statisticsRivers["MEAN_NEAR_"] #Setting variable of the mean
-statisticsRiversstd= statisticsRivers["STD_NEAR_D"] #Setting variable of the Standard deviation
+statisticsRiversdbf= Dbf5(myworkspace + "/" + "Results" + "/" "StatisticsRivers.dbf") #Convert the dBase file into a data frame
+statisticsRivers= statisticsRiversdbf.to_dataframe() #Convert the dBase file into a data frame
+statisticsRiversmean= statisticsRivers["MEAN_NEAR_"] #Setting the variable of the mean
+statisticsRiversstd= statisticsRivers["STD_NEAR_D"] #Setting the variable of the Standard deviation
 
 coefficientRivers=statisticsRiversstd*100/statisticsRiversmean #Coefficient of variance
 print coefficientRivers

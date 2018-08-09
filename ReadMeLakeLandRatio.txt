@@ -1,26 +1,26 @@
-Read Me Lake-Land-Ratio Analysis
+Read Me Lake-Land Ratio Analysis
 
 
-**********************************************************************************************************************************************
+**********************************************************************************************************************
 Variables "myworkspace", "lake", "settlements", "BuffLake100" to "BuffLake5000", "interLake100" to "interLake5000" and
-"SumLakeBuff100" to "SumLakeBuff5000"
-**********************************************************************************************************************************************
+"SumLakeBuff100" to "SumLakeBuff5000" (several lines)
+**********************************************************************************************************************
 
-For the lake-land-ratio analysis you have to adjust the variable "myworkspace" (line 14) to your chosen workspace. 
+For the lake-land ratio analysis you have to adjust the variable "myworkspace" (line 14) to your chosen workspace. 
 
-The "lake" variable (line 21) is where you read in your lake/hydrography shapefile. You have to adjust
-the path to where you have saved your hydrography data. 
+The "Lake" variable (line 21) is where you read in your lake/hydrography shapefile. You have to adjust
+the path to where you have stored your hydrography data. 
 
-The "settlements" variable (line 24) is where you read in your settlement point shapefile. You have to adjust the path to
-where you have saved your settlement shapefile.
+The "Settlements" variable (line 24) is where you read in your settlement point shapefile. You have to adjust the path to
+where you have stored your settlement shapefile.
 
 "BuffLake100" to "BuffLake5000" (lines 32 to 35). These are the variables for the buffers you set around your settlements. You can adjust the path
-to your chosen directory. Since it is no final result you can also place it in a temporary directory.
+to your chosen directory. Since it is no final result you can also use a temporary directory.
 
-The variables "interLake100" to "interLake5000" (lines 61 to 64) are the variables that are used for the intersect function.  You can adjust the path
-to your chosen directory. Since it is no final result you can also place it in a temporary directory.
+The variables "interLake100" to "interLake5000" (lines 61 to 64) are the variables that are used as the output path for the intersect function.  You can adjust the path
+to your chosen directory. Since it is no final result you can also use a temporary directory.
 
-Variables "SumLakeBuff100" to "SumLakeBuff5000" (lines 127 to 130): In some buffers there is more than one lake. These variables are later used in the function
+Variables "SumLakeBuff100" to "SumLakeBuff5000" (lines 127 to 130): In some buffers there is more than one lake. These variables are later used as the output path in a function
 to combine these separated polygons per buffer/settlement. You can adjust the path to your chosen directory.
 
 
@@ -54,16 +54,16 @@ these two lines.
 Getting the area of the buffers in square meters (lines 95 to 113)
 ******************************************************************
 
-Here you only have to change something if you have chosen other buffer distances than in the original script. If you have done that, you have to put write down
+Here you only have to change something if you have chosen other buffer distances than in the original script. If you have done that, you have to write down
 the correct amount of sqaure meters for your buffer distance which is displayed in the console via print (Area...m).
 
 
-**********************************************************************************************************
-Calculating the percentage the lake polygon/s in relation to the respective buffer area (lines 121 to 124)
-**********************************************************************************************************
+*************************************************************************************************************
+Calculating the percentage of the lake polygon/s in relation to the respective buffer area (lines 121 to 124)
+*************************************************************************************************************
 
 Here you only have to adjust something if you have chosen other buffer distances. If you have done that you have to divide the field "POLY_AREA" by the correct amount of square meters
-for your buffer distance, see also just above under "Getting the area of the buffers in sqaure meters (lines 95 to 113)".
+for your buffer distance. See also just above under "Getting the area of the buffers in sqaure meters (lines 95 to 113)".
 
 
 ***********************************************************************************************************
@@ -72,7 +72,7 @@ Statistics analysis - Summarizing lake polygons if there are more than one in on
 
 The function "arcpy.Statistics_analysis() is used to summarize the percentage of the lake polygons if there are several different lakes in the same buffer/around the same settlement.
 In the last input in the bracket of the function you have to change the last field name. In this case the field name for the settlments was "Fundort". You have to
-replace this with your correspondending field name for the settlement. The field name "Percent_SUM" should be the same since it was newly created in the lines 121 to 124 and you
+replace this with your correspondending field name for the settlements. The field name "Percent_SUM" should be the same since it was newly created in the lines 121 to 124 and you
 do not need to change it.
 
 
@@ -80,7 +80,7 @@ do not need to change it.
 Visualisation in the par plot (line 144 to 184)
 ***********************************************
 
-The same commands are used four times for the visualition of the different buffer distances. The lines named in the following are for the first visualisation of the buffer distance of hundert meters, however
+The same commands are used four times for the visualition of the different buffer distances. The lines named in the following are for the visualisation of the 100 m radius buffer, however
 the remarks are also applicable for the other three "visualiston blocks".
 You do not have to change anything in line 144 and 145. 
 On line 146 you can make adjustments on how many bins/bars you want to have displayed. In this case 56 were chosen, the same amount as there are settlements.

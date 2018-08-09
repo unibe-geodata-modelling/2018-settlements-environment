@@ -11,13 +11,13 @@ For the soil analysis you have to adjust the variable "myworkspace" (line 14) to
 The "Bodeneignungskarte" variable (line 21) is where you read in your shapefile of your soil suitablity map. You have to adjust
 the path to where you have stored your soil suitability map. 
 
-The "settlements" variable (line 22) is where you read in your settlement point shapefile. You have to adjust the path to
+The "Settlements" variable (line 22) is where you read in your settlement point shapefile. You have to adjust the path to
 where you have stored your settlement shapefile.
 
 "Bufferzone100_shp" to "Bufferzone5000_shp" (lines 29 to 32): These are the variables for the buffers you set around your settlements. You can adjust the path
 to your chosen directory. Since it is no final result you could also use a temporary directory.
 
-The variables "interBoden100" to "interBoden5000" (lines 58 to 61) are the variables that are used for the output of the intersect function.  You can adjust the path
+The variables "interBoden100" to "interBoden5000" (lines 58 to 61) are the variables that are used as the output path of the intersect function.  You can adjust the path
 to your chosen directory. Since it is no final result you could also use a temporary directory.
 
 Variables "SumBuff100" to "SumBuff5000" (lines 127 to 130): Sometimes in one buffer the same soil suitability can appear in several separated polygons. 
@@ -75,7 +75,7 @@ Statistics analysis - Summarizing the polygons with the same soil suitability al
 *****************************************************************************************************************************
 
 The function "arcpy.Statistics_analysis() is used to summarize the same categories of soil suitabilies (along with their percentages of land coverage in the buffer area) per settlement.
-You have to change the field names for the last input in the bracket. In this case the field name for the soil suitability was "Eignungsei" and for the settlements "Fundort".
+You have to change the field names for the last input in the bracket. In this case the field name for the soil suitability was "Eignungsei" and for the settlement names "Fundort".
 You have to replace this with your correspondending field names.
 
 

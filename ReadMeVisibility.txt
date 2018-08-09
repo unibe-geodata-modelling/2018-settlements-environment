@@ -1,13 +1,13 @@
 Read Me Visibility Analysis
 
-*****************************************************************************************
-Variable "myworkspace", "settl", "settlements", "dem" and "visible_area" (several lines):
-*****************************************************************************************
+******************************************************************************************
+Variablea "myworkspace", "settl", "settlements", "dem" and "visible_area" (several lines):
+******************************************************************************************
 
 For the visiblity analysis you have to adjust the variable "myworkspace" (line 16) to your chosen workspace.
 The variable "tempdir" (line 17) must also be adjustet to your own temporary directory.
 
-The "settlements" variable (line 24) is where you read in your point shapefile of settlements and the "dem" 
+The "Settlements" variable (line 24) is where you read in your point shapefile of settlements and the "dem" 
 variable (line 27) is where you read in your DEM. There you have to adjust the path to the directory where your
 point shapefile/ DEM is stored.
 
